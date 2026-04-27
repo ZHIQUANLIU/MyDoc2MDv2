@@ -33,6 +33,14 @@ cargo run
 
 ## 📖 使用指南
 
+### 📦 最终发布 (生产模式)
+如果您想要构建用于发布的、经过极限压缩和深度优化的最终版 `.exe`，请运行：
+
+```powershell
+cargo build --release
+```
+编译完成后，最终的单文件可执行程序将会安静地躺在 `target/release/mydoc2mdv2.exe` 目录下。您可以将这个带有专属 Icon 的精巧文件提取出来，单独分发和使用了！（*注意：由于底层基于 Python，使用者电脑上仍需有对应的 Python 环境*）。
+
 1. **配置环境**：在左侧边栏输入你的 `Gemini API Key`（系统会自动安全地记住您的 Key），并选择输出目录（默认为 `Downloads`）。
 2. **选择模型**：推荐使用 `Gemini 2.5 Flash` 以获得极速和高精度的视觉 OCR 修复。开启 `AI Refinement` 开关以启用增强功能。
 3. **导入文件**：直接将您的 PDF 拖拽到主屏幕中间的 "Drop PDF here" 区域，或点击选中文件。
