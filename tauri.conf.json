@@ -1,0 +1,36 @@
+{
+  "build": {
+    "distDir": "frontend",
+    "devPath": "frontend",
+    "withGlobalTauri": true
+  },
+  "package": {
+    "productName": "Doc2MD",
+    "version": "0.1.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": true
+    },
+    "bundle": {
+      "active": false,
+      "icon": ["icons/icon.ico"],
+      "identifier": "com.antigravity.doc2md"
+    },
+    "security": {
+      "csp": null
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "height": 700,
+        "resizable": true,
+        "title": "Doc2MD - AI PDF Converter",
+        "width": 1000,
+        "center": true,
+        "transparent": true,
+        "decorations": false
+      }
+    ]
+  }
+}

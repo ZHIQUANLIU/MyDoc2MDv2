@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doc2MD</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Include marked.js for Markdown Preview -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div data-tauri-drag-region class="titlebar">
+        <div class="titlebar-title">Doc2MD</div>
+        <div class="titlebar-controls">
+            <div class="control-btn minimize" id="titlebar-minimize"></div>
+            <div class="control-btn maximize" id="titlebar-maximize"></div>
+            <div class="control-btn close" id="titlebar-close"></div>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <!-- Sidebar / Settings -->
+        <aside class="glass-panel sidebar">
+            <h2 class="section-title">SETTINGS</h2>
+            
+            <div class="input-group">
+                <label>Gemini API Key</label>
+                <input type="password" id="api-key" placeholder="Enter API Key">
+            </div>
+
+            <div class="input-group">
+                <label>Model</label>
+                <select id="model-select">
+                    <option value="gemini-2.5-flash">Gemini 2.5 Flash</option>
+                    <option value="gemini-1.5-pro">Gemini 1.5 Pro</option>
+                    <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
+                </select>
+            </div>
+
+            <div class="input-group toggle-group">
+                <label>AI Refinement</label>
+                <label class="switch">
+                    <input type="checkbox" id="use-ai">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+            <div class="input-group">
+                <label>Output Directory</label>
+                <div class="file-input-wrapper">
+                    <input type="text" id="output-dir" placeholder="C:\Downloads" readonly>
+                    <button id="btn-select-dir" class="icon-btn">📁</button>
+                </div>
+            </div>
+            
+            <hr class="separator">
+            
+            <h2 class="section-title">INFO</h2>
+            <p class="info-text">Using PyMuPDF4LLM for high-fidelity extraction of text, tables, and images.</p>
+        </aside>
+
+        <!-- Main Area -->
+        <main class="main-content">
+            
+            <!-- Drop Zone -->
+            <div id="drop-zone" class="glass-panel drop-zone">
+                <div class="drop-content">
+                    <span class="icon">📄</span>
+                    <p>Click or Drop PDF here</p>
+                </div>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="progress-container" id="progress-container" style="display: none;">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+
+            <!-- Result Area -->
+            <div class="glass-panel result-area">
+                <div class="tabs">
+                    <button class="tab active" data-tab="preview">PREVIEW</button>
+                    <button class="tab" data-tab="raw">RAW MD</button>
+                </div>
+                <div class="tab-content" id="tab-preview">
+                    <div id="markdown-preview" class="markdown-body">Output preview will appear here...</div>
+                </div>
+                <div class="tab-content hidden" id="tab-raw">
+                    <textarea id="raw-md" readonly placeholder="Raw Markdown will appear here..."></textarea>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn secondary" id="btn-open-folder">Open Output Folder</button>
+                </div>
+            </div>
+
+            <!-- Log Console -->
+            <div class="glass-panel console">
+                <h2 class="section-title">LOG CONSOLE</h2>
+                <div id="log-view" class="log-view"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
